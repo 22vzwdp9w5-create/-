@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 26.2.7.3 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2026-11-11T20:19:56"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin-left: 0.91in; margin-right: 0.51in; margin-top: 0.79in; margin-bottom: 0.79in }
+		p { direction: ltr; margin-bottom: 0.1in; widows: 2; orphans: 2; text-align: justify; line-height: 115%; background: transparent }
+		p.western { font-family: "XO Thames", serif; font-size: 14pt }
+		p.cjk { font-size: 14pt }
+		a:link { color: #0000ff; text-decoration: underline }
+		a.western:link { font-family: "XO Thames", serif; font-size: 14pt }
+		a.cjk:link { font-size: 14pt }
+		a.sdfootnotesym-western { font-size: 14pt; font-family: "XO Thames", serif }
+		a.sdfootnotesym-cjk { font-size: 14pt }
+		a.sdendnotesym-western { font-size: 14pt; font-family: "XO Thames", serif }
+		a.sdendnotesym-cjk { font-size: 14pt }
+	</style>
+</head>
+<body lang="en-US" link="#0000ff" vlink="#800000" dir="ltr"><p class="western" style="line-height: 100%; margin-bottom: 0in">
+<font face="Neue&amp;apos;, serif">html</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&lt;!--
+Контейнер, внутри которого можно двигать
+картинку --&gt;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&lt;div
+id=&quot;canvas-area&quot; style=&quot;position: relative; width:
+100%; height: 500px; border: 1px dashed </font><a class="western" href="https://vk.ru/im/convo/588494290?search=%23ccc&amp;entrypoint=unknown"><font color="#0000ee"><font face="Neue&amp;apos;, serif"><u>#ccc</u></font></font></a><font face="Neue&amp;apos;, serif">;
+overflow: hidden;&quot;&gt;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&lt;!-- Ваша картинка --&gt;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&lt;img id=&quot;draggable-img&quot;&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;
+&nbsp; &nbsp;
+src=&quot;</font><a class="western" href="https://sketchfab.com/3d-models/djingereyber-mosque-timbuktu-mali-cedd63bfa1e64779a950fd43b431a765"><font color="#0000ee"><font face="Neue&amp;apos;, serif"><u>https://sketchfab.com/3d-models/djingereyber-mosque-timbuktu-mali-cedd63bfa1e64779a950fd43b431a765</u></font></font></a><font face="Neue&amp;apos;, serif">&quot;&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;
+&nbsp; &nbsp; alt=&quot;Дизайн-элемент&quot;&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;
+&nbsp; &nbsp; style=&quot;position: absolute; top: 50px; left: 50px;
+width: 200px; cursor: grab; user-select: none; touch-action: none;&quot;&gt;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><br/>
+<br/>
+
+</p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&lt;/div&gt;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><br/>
+<br/>
+
+</p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&lt;script&gt;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+const img = document.getElementById('draggable-img');</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+const container = document.getElementById('canvas-area');</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+let isDragging = false;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+let startX, startY, initialLeft, initialTop;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><br/>
+<br/>
+
+</p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+// Начало перетаскивания</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+img.addEventListener('pointerdown', (e) =&gt; {</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; isDragging = true;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; img.style.cursor = 'grabbing';</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;
+&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; // Запоминаем начальные координаты
+курсора и картинки</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; startX = e.clientX;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; startY = e.clientY;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; initialLeft = img.offsetLeft;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; initialTop = img.offsetTop;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;
+&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; // Захватываем указатель, чтобы
+картинка не терялась при резком движении</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; img.setPointerCapture(e.pointerId);</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+});</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><br/>
+<br/>
+
+</p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+// Процесс движения</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+img.addEventListener('pointermove', (e) =&gt; {</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; if (!isDragging) return;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;
+&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; const dx = e.clientX - startX;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; const dy = e.clientY - startY;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;&nbsp;
+&nbsp;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; img.style.left = `${initialLeft + dx}px`;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; </font><a class="western" href="https://vk.ru/away.php?to=https%3A%2F%2Fimg.style.top&amp;utf=1"><font color="#0000ee"><font face="Neue&amp;apos;, serif"><u>img.style.top</u></font></font></a><font face="Neue&amp;apos;, serif">
+= `${initialTop + dy}px`;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+});</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><br/>
+<br/>
+
+</p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+// Конец перетаскивания</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+img.addEventListener('pointerup', (e) =&gt; {</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; isDragging = false;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; img.style.cursor = 'grab';</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+&nbsp; img.releasePointerCapture(e.pointerId);</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&nbsp;
+});</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><font face="Neue&amp;apos;, serif">&lt;/script&gt;</font></p>
+<p class="western" style="line-height: 100%; margin-bottom: 0in"><br/>
+
+</p>
+</body>
+</html>
